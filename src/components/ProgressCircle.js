@@ -1,11 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-import './Button.css';
+import './ProgressCircle.css';
 
-export default class Button extends Component {
+export default class ProgressCircle extends Component {
   render(){
     // let className = 'button uppercase bold';
-    let className = 'mainBttn';
+    let className = 'ProgressCircle';
     if (this.props.isActive){
       className += ' buttonActive';
     }
@@ -14,7 +14,7 @@ export default class Button extends Component {
       className += ' ' + this.props.className;
     }
     return (
-      <div className={className} onClick={this.props.onClick}>{this.props.title}</div>
+      <div className={className} onClick={this.props.onClick}>{this.props.init}</div>
     );
   }
 }

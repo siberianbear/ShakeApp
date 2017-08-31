@@ -1,24 +1,34 @@
 // @flow
 import React, { Component } from 'react';
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
+import ProgressCircle from '../../components/ProgressCircle';
 import backBtn from '../../assets/arrow-icon.png';
 import ShakeComp from '../../components/ShakeComp';
 
-import mag from '../../assets/hm_mag1.jpg';
-import mag2 from '../../assets/hm_mag2.jpg';
+import phone from '../../assets/iphone2.png';
 
-import soundWin from '../../assets/sound_win.mp3';
-import soundShake from '../../assets/sound_shake.mp3';
-import soundLose from '../../assets/sound_lose.mp3';
-import germent1 from '../../assets/black-ribbon.png';
-import germent2 from '../../assets/innerwear1.png';
-import germent3 from '../../assets/longsleeves.png';
-import germent4 from '../../assets/shorts1.png';
+import soundShake from '../../assets/sounds/sound_shake.mp3';
+
+// GERMENTS_ITEMS
+import icon1 from '../../assets/icon01.jpg';
+import icon2 from '../../assets/icon02.jpg';
+import icon3 from '../../assets/icon03.jpg';
+import icon4 from '../../assets/icon04.jpg';
+import icon5 from '../../assets/icon05.jpg';
+import icon6 from '../../assets/icon06.jpg';
+import icon7 from '../../assets/icon07.jpg';
+import icon8 from '../../assets/icon08.jpg';
+import icon9 from '../../assets/icon09.jpg';
+import icon10 from '../../assets/icon10.jpg';
+import icon11 from '../../assets/icon11.jpg';
+import icon12 from '../../assets/icon12.jpg';
+
+import {Timer} from '../../components/Timer';
 
 import '../../components/csshake-slow.min.css';
 import '../../components/csshake-hard.min.css';
 
-import '../css/View.css';
+import '../css/View1.css';
 import '../css/View2.css';
 
 const BOTTOM_THRESHOLD_FROM = 5;
@@ -31,8 +41,10 @@ const MAX_SHAKES_TO = 10;
 const SHAKES_TIMER_FROM = 10;
 const SHAKES_TIMER_TO = 30;
 const SHAKES_TIMER_STEP = 5;
-const GARMENTS_NUMBER = 4;
-const GERMENTS_ITEMS = [germent1, germent2, germent3, germent4];
+const GARMENTS_NUMBER = 12;
+const GERMENTS_ITEMS = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12];
+
+const setTime = 31; // in seconds
 
 export type Score = {
   high: number,
@@ -41,7 +53,9 @@ export type Score = {
 
 export type Props = {
   onClick: Score => void,
-  onBack: () => void
+  onBack: () => void,
+  // onDone: () => void
+  onDone: Score => void
 };
 
 type GarmentsSettings = {
@@ -56,6 +70,7 @@ type GarmentsSettings = {
 const randomMaxShakes = (min, max) => {
   let rand = min + Math.random() * (max + 1 - min);
   rand = Math.floor(rand);
+  // console.log(rand);
   return rand;
 };
 
@@ -77,6 +92,7 @@ const randomGarmentsSettings = (number: number): GarmentsSettings => {
 };
 
 const garmentsSettings = randomGarmentsSettings(GARMENTS_NUMBER);
+
 export default class View2 extends Component {
   item: any;
 
@@ -114,7 +130,7 @@ export default class View2 extends Component {
         SHAKES_TIMER_TO,
         SHAKES_TIMER_STEP
       ),
-      closeBtnClass: 'hidden',
+      // closeBtnClass: 'hidden',
       actualStep: 0,
       dropGermentAnimation: false
     };
@@ -134,17 +150,19 @@ export default class View2 extends Component {
         clearInterval(this.shakesTimerId);
         clearTimeout(this.clearCountTimer);
         this.shakeComp.removeShakeListener();
-        this.audioPlayer.src = soundLose;
-        this.audioPlayer.play();
+        // this.audioPlayer.src = soundLose;
+        // this.audioPlayer.play();
 
         setTimeout(() => {
-          this.setState({ closeBtnClass: 'visible' });
+          // this.setState({ closeBtnClass: 'visible' });
         }, 2000);
       }
     }, 1000);
+    // alert(this.state.shakesTimer);
   }
 
   scoreDidOccur(isHigh: boolean) {
+    // console.log("score");
     if (isHigh) {
       let score = this.state.score.high + 1;
       const maxShakes = garmentsSettings.steps[this.state.actualStep].maxShakes;
@@ -161,24 +179,19 @@ export default class View2 extends Component {
       });
 
       // check if user has max count
-      if (
-        score === maxShakes &&
-        this.state.actualStep + 1 === GARMENTS_NUMBER
-      ) {
+      if (score === maxShakes &&
+        this.state.actualStep + 1 === GARMENTS_NUMBER) {
         this.shakeComp.removeShakeListener();
         clearInterval(this.shakesTimerId); // clear shakes timer
         clearTimeout(this.clearCountTimer); // clear timeout when user wins
 
-        this.audioPlayer.src = soundWin;
-        this.audioPlayer.play();
+        // this.audioPlayer.src = soundWin;
+        // this.audioPlayer.play();
 
         setTimeout(() => {
-          this.props.onDone(this.state.score);
+          this.props.onDone("won");
         }, 3500);
-      } else if (
-        score === maxShakes &&
-        this.state.actualStep < GARMENTS_NUMBER
-      ) {
+      } else if (score === maxShakes && this.state.actualStep < GARMENTS_NUMBER) {
         this.resetScore();
         this.dropGerment();
         this.setState(prevState => ({
@@ -223,7 +236,9 @@ export default class View2 extends Component {
             isAnimate: false
           }
         });
+        // this.props.onDone("no");
       }, SHAKE_TIMEOUT);
+
     }
   }
 
@@ -242,10 +257,13 @@ export default class View2 extends Component {
   }
 
   shakeDidOccur() {
+    // document.getElementById('topText').style.display = 'none';
+    document.getElementById('topText').style.visibility = 'hidden';
     // reset previous timeout
     if (this.clearCountTimer) {
       this.clearTimer();
     }
+
     this.clearCountTimer = setTimeout(() => {
       this.resetScore();
     }, RESET_TIMEOUT);
@@ -265,18 +283,30 @@ export default class View2 extends Component {
     this.props.onBack();
   }
 
+  onChildChanged(newState) {
+    console.log("timeout happens");
+    // this.props.onDone({theQuiz: this.state.score, selected: null})
+    clearInterval(this.shakesTimerId);
+    clearTimeout(this.clearCountTimer);
+    this.props.onDone(null);
+  }
+
+  onSelected(selectedChoice){
+    // this.props.onClick({theQuiz: this.state.diceDrop, selected: selectedChoice})
+  }
+
   render() {
     const shakesTimer = this.state.shakesTimer;
 
-    let renderTimer = (
-      <p className={'time-left'}>
-        Time left: <span className="time-count"> {shakesTimer} </span> sec
-      </p>
-    );
+    // let renderTimer = (
+    //   <p className={'time-left'}>
+    //     Time left: <span className="time-count"> {shakesTimer} </span> sec
+    //   </p>
+    // );
 
     if (shakesTimer === 0) {
       clearInterval(this.shakesTimerId);
-      renderTimer = <p className={'time-is-up'}>Time's up</p>;
+      // renderTimer = <p className={'time-is-up'}>Time's up</p>;
     }
 
     const animateMag = this.state.animateMag;
@@ -295,7 +325,7 @@ export default class View2 extends Component {
       >
         <img
           src={GERMENTS_ITEMS[this.state.actualStep]}
-          alt="garment"
+          alt="falling icon"
           className="garment-img"
         />
       </div>;
@@ -306,7 +336,7 @@ export default class View2 extends Component {
           <img src={backBtn} alt="back button" />
         </button>
 
-        {renderTimer}
+        {/* {renderTimer} */}
 
         <audio id="audio">
           Ваш браузер не поддерживает <code>audio</code> элемент.
@@ -328,25 +358,30 @@ export default class View2 extends Component {
           }}
         />
 
+        <div id="topText">Full</div>
         <div className="item-wrap">
           <img
-            className={`item light-item${itemAnimClass}`}
-            src={mag}
+            className={`item light-item${itemAnimClass}`} alt="phone2"
+            src={phone}
             ref={item => {
               this.item = item;
             }}
           />
+          <ProgressCircle init="100%"/>
         </div>
         {renderDroppingGerment}
-        <div className="caption">
+        <div className="instruction">Shake the phone</div>
+        {/* <div className="caption">
           <text>Shake the magazine and see what happens</text>
-        </div>
+        </div> */}
 
-        <Button
+        <Timer start={setTime} callbackParent={(newState) => this.onChildChanged(newState) }/>
+
+        {/* <Button
           className={this.state.closeBtnClass}
           title="Close"
           onClick={() => this.props.onBack()}
-        />
+        /> */}
       </div>
     );
   }

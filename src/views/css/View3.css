@@ -1,4 +1,4 @@
-.won {
+/*.won {
   font-size: 30pt;
   font-weight: bold;
   color: rgb(172, 254, 47);
@@ -9,4 +9,46 @@
   font-size: 36pt;
   font-weight: bold;
   color: red;
+}*/
+
+
+#titleResultCorrect, #titleResultIncorrect, #resultInstruction {
+  font-family: HelveticaNeueLTStd-Th, 'Oswald', sans-serif;
+  text-align: center;
+  text-shadow: 1px 1px 4px #000;
+}
+
+#titleResultCorrect, #titleResultIncorrect {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+#titleResultCorrect {
+  color: #15E13D;
+}
+
+#titleResultIncorrect {
+  color: red;
+}
+
+#resultInstruction {
+  color: white;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+#resultChoice {
+  font-family: HelveticaNeueLT-BlackCond, 'Oswald', sans-serif;
+  font-size: 2rem;
+  color: #00fffe;
+  border: 1px solid white;
+  border-radius: 15px;
+  background-color: #404040;
+  padding: 5px 20px;
+  margin: 12px 0;
+}
+
+
+#resultChoiceNone {
+  display: none;
 }

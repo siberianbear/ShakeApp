@@ -1,4 +1,4 @@
-.button {
+/*.button {
   width: 99.99%;
   background-color: #d3d3d3;
   border-radius: 10px;
@@ -17,4 +17,20 @@
   border-color: white;
   border-width: 1px;
   border-style: solid;
+}*/
+
+
+.mainBttn {
+  color: white;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.mainBttn {
+  font-family: HelveticaNeueLT-BlackCond, 'Oswald', sans-serif;
+  border-radius: 30px;
+  background-color: #D02687;
+  border: 1px solid white;
+  padding: 0 30px 5px 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

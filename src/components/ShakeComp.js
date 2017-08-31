@@ -1,5 +1,6 @@
 // @flow
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import { Component } from 'react';
 import './ShakeComp.css';
 
 export type Props = {
@@ -17,7 +18,8 @@ export default class ShakeComp extends Component {
     // Instantiate new ShakeJs instance. Parameters passed might be different
     // as you customize the shake.js code. For now, instantiate as described in
     // example in https://github.com/alexgibson/shake.js/
-    this.Shake = new window.Shake({threshold: this.props.options.thresholdBottomFrom, timeout: this.props.options.timeout});
+    this.Shake = new window.Shake({threshold: this.props.options.thresholdBottomFrom,
+    timeout: this.props.options.timeout});
    }
 
   componentDidMount() {

@@ -1,0 +1,12 @@
+﻿
+.theTimer {
+  font-size: 1.5em;
+  color: white;
+  /* patch for to prevent moving */
+  /*width: 320px;*/
+  /*margin-left: 60%;*/
+}
+
+.timer-dynamic-text {
+  color: #15E13D;
+}
