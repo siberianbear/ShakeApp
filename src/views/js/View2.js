@@ -36,8 +36,8 @@ const BOTTOM_THRESHOLD_TO = 10;
 const TOP_THRESHOLD = 10;
 const SHAKE_TIMEOUT = 750;
 const RESET_TIMEOUT = 5000;
-const MAX_SHAKES_FROM = 5;
-const MAX_SHAKES_TO = 15;
+const MAX_SHAKES_FROM = 2; //5
+const MAX_SHAKES_TO = 5; //15
 // const SHAKES_TIMER_FROM = 10;
 // const SHAKES_TIMER_TO = 30;
 // const SHAKES_TIMER_STEP = 5;
@@ -73,7 +73,6 @@ type GarmentsSettings = {
 const randomMaxShakes = (min, max) => {
   let rand = min + Math.random() * (max + 1 - min);
   rand = Math.floor(rand);
-  // console.log(rand);
   return rand;
 };
 
