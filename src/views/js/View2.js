@@ -37,17 +37,14 @@ const TOP_THRESHOLD = 10;
 const SHAKE_TIMEOUT = 750;
 const RESET_TIMEOUT = 5000;
 const MAX_SHAKES_FROM = 2; //5
-const MAX_SHAKES_TO = 5; //15
-// const SHAKES_TIMER_FROM = 10;
-// const SHAKES_TIMER_TO = 30;
-// const SHAKES_TIMER_STEP = 5;
-const SHAKES_TIMER_FROM = 25;
-const SHAKES_TIMER_TO = 30;
-const SHAKES_TIMER_STEP = 1;
+const MAX_SHAKES_TO = 4; //15
+const SHAKES_TIMER_FROM = 25; //10
+const SHAKES_TIMER_TO = 30; //30
+const SHAKES_TIMER_STEP = 5;//5
 const GARMENTS_NUMBER = 12;
 const GERMENTS_ITEMS = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12];
 
-const setTime = 31; // in seconds
+const setTime = 30; // in seconds
 
 export type Score = {
   high: number,
@@ -182,7 +179,8 @@ export default class View2 extends Component {
       });
 
       // check if user has max count
-      if (score === maxShakes && this.state.actualStep + 1 === GARMENTS_NUMBER) {
+      // if (score === maxShakes && this.state.actualStep + 1 === GARMENTS_NUMBER) {
+      if (this.state.actualStep === GARMENTS_NUMBER) {
         this.shakeComp.removeShakeListener();
         clearInterval(this.shakesTimerId); // clear shakes timer
         clearTimeout(this.clearCountTimer); // clear timeout when user wins
@@ -277,6 +275,10 @@ export default class View2 extends Component {
     this.setState({ dropGermentAnimation: true });
     // this.setState({progress: Math.round(this.state.progress-8.3)});
     this.setState({progress: Math.round(this.state.progress-8)});
+    if(this.state.progress === 4) {
+      this.setState({progress: 0});
+      this.props.onDone("won");
+    }
     setTimeout(() => {
       this.setState({
         dropGermentAnimation: false
