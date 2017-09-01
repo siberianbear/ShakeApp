@@ -13,7 +13,7 @@
     position: relative;
   /*display: block;*/
     /*max-width: 100%;*/
-    max-width: 122px; /*252*/
+    max-width: 251px; /*252*/
     /*height: 350px;*/
     /*text-align: center;*/
     z-index: 2;
@@ -31,11 +31,11 @@
     animation-fill-mode: forwards;
 }
 
-.time-is-up {
+/*.time-is-up {
     color: red;
     font-size: 20px;
     font-weight: bold;
-}
+}*/
 
 .caption {
     position: absolute;
@@ -51,7 +51,7 @@
 .instruction {
   color: #666;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 #topText {
@@ -61,12 +61,12 @@
 
 .garment {
     position: absolute;
-    top: 50%;
+    top: 60%;
 }
 
 .garment-img {
     /*width: 150px;*/
-    width: 100px;
+    width: 70px;
 }
 
 .animate-fall-left {

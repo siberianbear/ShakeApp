@@ -1,17 +1,3 @@
-/*.won {
-  font-size: 30pt;
-  font-weight: bold;
-  color: rgb(172, 254, 47);
-  line-height: 1;
-}
-
-.lose {
-  font-size: 36pt;
-  font-weight: bold;
-  color: red;
-}*/
-
-
 #titleResultCorrect, #titleResultIncorrect, #resultInstruction {
   font-family: HelveticaNeueLTStd-Th, 'Oswald', sans-serif;
   text-align: center;
@@ -47,7 +33,6 @@
   padding: 5px 20px;
   margin: 12px 0;
 }
-
 
 #resultChoiceNone {
   display: none;

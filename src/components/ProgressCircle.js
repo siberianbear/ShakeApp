@@ -14,7 +14,7 @@ export default class ProgressCircle extends Component {
       className += ' ' + this.props.className;
     }
     return (
-      <div className={className} onClick={this.props.onClick}>{this.props.init}</div>
+      <div className={className} onClick={this.props.onClick}>{this.props.init}%</div>
     );
   }
 }
