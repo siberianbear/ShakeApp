@@ -94,7 +94,7 @@ export default class View3 extends Component {
           <img className="item" src={phone2} alt="phone2"/>
         </div>
         <Button title="Next" onClick={this.props.onClick} />
-      <div id="resultInstruction">tap next button</div>
+      {/* <div id="resultInstruction">tap next button</div> */}
       </div>
     );
   }

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 // import Button from '../../components/Button';
 import ProgressCircle from '../../components/ProgressCircle';
-import backBtn from '../../assets/arrow-icon.png';
+// import backBtn from '../../assets/arrow-icon.png';
 import ShakeComp from '../../components/ShakeComp';
 
 import phone from '../../assets/iphone2.png';
@@ -28,7 +28,7 @@ import {Timer} from '../../components/Timer';
 import '../../components/csshake-slow.min.css';
 import '../../components/csshake-hard.min.css';
 
-import '../css/View1.css';
+// import '../css/View1.css';
 import '../css/View2.css';
 
 const BOTTOM_THRESHOLD_FROM = 5;
@@ -53,7 +53,7 @@ export type Score = {
 
 export type Props = {
   onClick: Score => void,
-  onBack: () => void,
+  // onBack: () => void,
   // onDone: () => void
   onDone: Score => void
 };
@@ -286,10 +286,10 @@ export default class View2 extends Component {
     }, 2000);
   }
 
-  onBackBtn() {
-    this.audioPlayer = null; // reset player
-    this.props.onBack();
-  }
+  // onBackBtn() {
+  //   this.audioPlayer = null; // reset player
+  //   this.props.onBack();
+  // }
 
   onChildChanged(newState) {
     console.log("timeout happens");

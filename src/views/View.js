@@ -30,9 +30,8 @@ export default class View extends Component {
   }
 
   _onView2Click(score) {
-    console.log(score);
+    // console.log(score);
     this.setState({ currentPage: 3, score });
-    // console.log("ro-ya-li-ty");
     // console.log(this.state.score);
   }
 
@@ -51,7 +50,7 @@ export default class View extends Component {
         render = (
           <View2
             onDone={this._onView2Click.bind(this)}
-            onBack={this._onView1Click.bind(this)}
+            // onBack={this._onView1Click.bind(this)}
           />
         );
         break;

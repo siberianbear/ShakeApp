@@ -1,8 +1,10 @@
 #titleResultCorrect, #titleResultIncorrect, #resultInstruction {
-  font-family: HelveticaNeueLTStd-Th, 'Oswald', sans-serif;
+  font-family: 'Canaro-Med', 'Oswald', sans-serif;
   text-align: center;
   text-shadow: 1px 1px 4px #000;
 }
+
+
 
 #titleResultCorrect, #titleResultIncorrect {
   font-size: 2.5rem;
@@ -24,7 +26,7 @@
 }
 
 #resultChoice {
-  font-family: HelveticaNeueLT-BlackCond, 'Oswald', sans-serif;
+  font-family: 'Canaro-Med', 'Oswald', sans-serif;
   font-size: 2rem;
   color: #00fffe;
   border: 1px solid white;

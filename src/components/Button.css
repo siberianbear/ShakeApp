@@ -19,18 +19,16 @@
   border-style: solid;
 }*/
 
-
 .mainBttn {
-  color: white;
-  text-shadow: 1px 1px 4px #000;
-}
-
-.mainBttn {
+  text-transform: uppercase;
   font-family: HelveticaNeueLT-BlackCond, 'Oswald', sans-serif;
+  font-weight: 700;
   border-radius: 30px;
   background-color: #D02687;
   border: 1px solid white;
-  padding: 0 30px 5px 30px;
+  padding: 5px 30px 9px 30px;
   font-size: 1.5rem;
   cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px 4px #000;
 }
