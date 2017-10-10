@@ -5,9 +5,12 @@
   border-radius: 50%;
   background: rgba(29, 29, 29, 0.8);
   /*text-shadow: 1px 1px 4px #000;*/
-  position: absolute;
+  /*position: relative;*/
+  /*position: relative;*/
   padding: 10px;
-  /*margin: 30% auto;*/
+  margin: auto;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;

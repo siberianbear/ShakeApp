@@ -34,8 +34,8 @@ import '../css/View2.css';
 const BOTTOM_THRESHOLD_FROM = 5;
 const BOTTOM_THRESHOLD_TO = 10;
 const TOP_THRESHOLD = 10;
-const SHAKE_TIMEOUT = 750;
-const RESET_TIMEOUT = 5000;
+const SHAKE_TIMEOUT = 550; //750
+const RESET_TIMEOUT = 3000; // 5000
 const MAX_SHAKES_FROM = 2; //5
 const MAX_SHAKES_TO = 4; //15
 const SHAKES_TIMER_FROM = 25; //10
@@ -320,8 +320,8 @@ export default class View2 extends Component {
     const animateMag = this.state.animateMag;
     const itemAnimClass = animateMag.isAnimate
       ? this.state.animateMag.animHigh
-        // ? ' shake-constant shake-hard'
-        ? ' shake-constant shake-slow'
+        ? ' shake-constant shake-hard'
+        // ? ' shake-constant shake-slow'
         : ' shake-constant shake-slow'
       : '';
 
