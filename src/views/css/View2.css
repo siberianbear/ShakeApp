@@ -10,18 +10,22 @@
 
 /*TODO:*/
 .item-wrap {
-  /*top: 10%;*/
-  /*position: relative;*/
-  /*display: block;*/
-  /*max-width: 100%;*/
   max-width: 251px; /*252*/
-  /*height: 350px;*/
-  /*text-align: center;*/
-  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  /*margin: 20px 0;*/
+}
+.item-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageLayer {
+  position: relative;
+  background-color: green;
 }
 
 .item {

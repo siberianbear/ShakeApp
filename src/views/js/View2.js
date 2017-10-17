@@ -370,13 +370,15 @@ export default class View2 extends Component {
 
         <div id="topText">Full</div>
         <div className="item-wrap">
-          <img
+          <div id="imageLayer">
+            <img
             className={`item light-item${itemAnimClass}`} alt="phone2"
             src={phone}
             ref={item => {
               this.item = item;
             }}
           />
+        </div>
           <ProgressCircle init={this.state.progress}/>
         </div>
         {renderDroppingGerment}
